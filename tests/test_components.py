@@ -9,8 +9,8 @@ import components
 class TestComponents(TestCase):
 
     def test_time(self):
-        n = 5000
-        m = 200000
+        n = 50000
+        m = 50000
 
         self.test_file = 'test.in'
 
@@ -30,9 +30,15 @@ class TestComponents(TestCase):
         start = datetime.datetime.now()
 
         graph = components.create_graph(self.test_file)
-        ncomp = components.get_components(graph)
+        print('Graph created...')
+
+        #print('Graph:\n{}'.format(graph))
+
+        ncomp = components.get_components_bfs(graph)
         components.print_components('test.out', graph, ncomp)
 
         end = datetime.datetime.now()
+
+        #print('Graph:\n{}'.format(graph))
 
         print('Total time: {}'.format(end - start))
