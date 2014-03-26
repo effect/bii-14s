@@ -1,4 +1,4 @@
-__author__ = 'abragin'
+__author__ = 'Антон Брагин'
 
 import logging
 import sys
