@@ -88,9 +88,9 @@ def print_components(file_out, graph, ncomp):
             f.write(' ')
 
 ##Execute script
-#graph = create_graph('components.in')
-#logger.debug('Graph created: {}'.format(graph))
-#ncomp = get_components_bfs(graph)
-#logger.debug('Graph analyzed: {}'.format(graph))
-#
-#print_components('components.out', graph, ncomp)
+graph = create_graph('components.in')
+logger.debug('Graph created: {}'.format(graph))
+ncomp = get_components_bfs(graph)
+logger.debug('Graph analyzed: {}'.format(graph))
+
+print_components('components.out', graph, ncomp)

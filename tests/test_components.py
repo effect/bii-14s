@@ -1,16 +1,16 @@
-from unittest import TestCase
+from unittest import TestCase, skip
 
 __author__ = 'Антон Брагин'
 
 import random
 import datetime
-import components
+import components_fast as components
 
 class TestComponents(TestCase):
 
     def test_time(self):
-        n = 50000
-        m = 50000
+        n = 10000
+        m = 100000
 
         self.test_file = 'test.in'
 
@@ -34,7 +34,7 @@ class TestComponents(TestCase):
 
         #print('Graph:\n{}'.format(graph))
 
-        ncomp = components.get_components_bfs(graph)
+        ncomp = components.get_components_dfs(graph)
         components.print_components('test.out', graph, ncomp)
 
         end = datetime.datetime.now()
