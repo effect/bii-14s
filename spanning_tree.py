@@ -4,13 +4,26 @@ import math
 from operator import itemgetter
 
 class DSU:
+    '''
+    Disjoint set union implementation with paths compression and ranks heuristics implemented
+    '''
 
     def __init__(self, n):
-        #Create set of size n where each element is the parent of itself
+        """
+        Create set of size n where each element is the parent of itself.
+
+        :param n: number of different elements/sets
+        """
         self.parent = [i for i in range(n)]
         self.size = [1 for i in range(n)]
 
     def find_set(self, v):
+        """
+        Find set to which element belongs.
+
+        :param v: element to search
+        :return: number of set
+        """
         if v == self.parent[v]:
             return v
         else:
@@ -18,6 +31,12 @@ class DSU:
             return self.parent[v]
 
     def union_sets(self, u, v):
+        """
+        Unite the sets provided.
+
+        :param u: first set to unite
+        :param v: second set to unite
+        """
         uset = self.find_set(u)
         vset = self.find_set(v)
 
@@ -30,6 +49,12 @@ class DSU:
                 self.size[uset] += self.size[vset]
 
 def parse_input(file):
+    """
+    Read input from the file provided and return graph.
+
+    :param file: file to read data from
+    :return: tuple with number of graph vertices and list of tuples containing source vertex, sink vertex, edge weight
+    """
     with open(file) as fin:
         n = int(fin.readline().strip())
         coordinates = []
@@ -38,8 +63,7 @@ def parse_input(file):
             #Append coordinate pair
             coordinates.append((x, y))
 
-        #Number of edges in a complete graph can be calculated like this
-        edges = int(n * (n - 1) / 2)
+        #Generate all possible edges of complete graph and distances between them
         edges = []
         #Calculate distances between vertices
         for u in range(len(coordinates)):
@@ -52,6 +76,13 @@ def parse_input(file):
         return n, edges
 
 def kruskal(n, edges):
+    """
+    Runs Kruskal algorithm and return minimum spanning tree size.
+
+    :param n: number of vertices in the graph
+    :param edges: graph edges
+    :return: size of minimum spanning tree
+    """
     edges = sorted(edges, key=itemgetter(2))
     dsu = DSU(n)
 
