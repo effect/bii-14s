@@ -1,10 +1,13 @@
-from unittest import TestCase, skip
+from unittest import TestCase
+
+from graphs import components_fast as components
+
 
 __author__ = 'Антон Брагин'
 
 import random
 import datetime
-import components_fast as components
+
 
 class TestComponents(TestCase):
 

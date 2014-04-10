@@ -1,5 +1,7 @@
 from unittest import TestCase
-import spanning_tree
+
+from graphs import spanning_tree
+
 
 __author__ = 'Антон Брагин'
 
