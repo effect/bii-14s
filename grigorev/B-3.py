@@ -21,4 +21,4 @@ permutations = generator(
 
 with open("permutations.out", "w") as outfile:
 	for permutation in permutations:
-		outfile.write(" ".join([str(x) for x in permutation]) + "\n")
+		outfile.write(" ".join(permutation) + "\n")
