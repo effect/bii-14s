@@ -27,5 +27,6 @@ predecessor = neighbor(vector, -1)
 successor   = neighbor(vector, 1)
 
 with open("nextvector.out", "w") as outfile:
+	# positional notation: reverse order again
 	outfile.write("".join(predecessor[::-1]) + "\n")
 	outfile.write("".join(successor[::-1])   + "\n")
