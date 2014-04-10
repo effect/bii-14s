@@ -11,11 +11,12 @@ def generator(subsequence, symbols, length):
 with open("allvectors.in", "r") as infile:
 	n = int(infile.readline().strip())
 
+sequences = generator(
+	subsequence = [],
+	symbols     = ["0", "1"],
+	length      = n
+)
+
 with open("allvectors.out", "w") as outfile:
-	sequences = generator(
-		subsequence = [],
-		symbols     = ["0", "1"],
-		length      = n
-	)
 	for sequence in sequences:
 		outfile.write("".join(sequence) + "\n")
