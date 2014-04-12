@@ -53,6 +53,6 @@ def main():
 	sys.stdout = open("pathbge1.out", "w")
 	graph      = adjacencyListFromData(sys.stdin.readlines())
 	distances  = breadthFirstSearch(graph, 1)
-	print(" ".join([str(x) for x in distances.values()]))
+	print(" ".join(str(x) for x in distances.values()))
 
 main()

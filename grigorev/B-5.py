@@ -18,4 +18,4 @@ subsets = generator(
 
 with open("subsets.out", "w") as outfile:
 	for subset in subsets:
-		outfile.write(" ".join([str(x) for x in subset]) + "\n")
+		outfile.write(" ".join(str(x) for x in subset) + "\n")

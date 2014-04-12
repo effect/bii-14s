@@ -21,4 +21,4 @@ choices = generator(
 
 with open("choose.out", "w") as outfile:
 	for choice in choices:
-		outfile.write(" ".join([str(x) for x in choice]) + "\n")
+		outfile.write(" ".join(str(x) for x in choice) + "\n")

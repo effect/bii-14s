@@ -61,9 +61,9 @@ def main():
 	distances  = initializeDistanceMatrix(graph)
 	distances  = floydWarshall(distances, graph)
 	for line in distances:
-		print(" ".join([
+		print(" ".join(
 			str(x)
 			for x in line
-		]))
+		))
 
 main()

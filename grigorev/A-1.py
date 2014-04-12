@@ -63,6 +63,6 @@ def main():
 	# number of components
 	print(max(components.values()))
 	# what vertex belongs where
-	print(" ".join([str(x) for x in components.values()]))
+	print(" ".join(str(x) for x in components.values()))
 
 main()
