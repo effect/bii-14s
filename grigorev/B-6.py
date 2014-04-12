@@ -9,8 +9,8 @@ def neighbor(vector, direction):
 		P, N = ["1", "0"]
 	# create a copy of vector
 	result = vector[:]
-	# step-through like a digital clock
-	for pos, val in enumerate(vector):
+	# step-through like a digital clock (RTL)
+	for pos, val in reversed(list(enumerate(vector))):
 		if val == P:
 			result[pos] = N
 			return result
@@ -21,12 +21,11 @@ def neighbor(vector, direction):
 
 with open("nextvector.in", "r") as infile:
 	string = infile.readline().strip()
-	vector = list(string)[::-1] # we order positions RTL when interpreting binary
+	vector = list(string)
 
 predecessor = neighbor(vector, -1)
 successor   = neighbor(vector, 1)
 
 with open("nextvector.out", "w") as outfile:
-	# positional notation: reverse order again
-	outfile.write("".join(predecessor[::-1]) + "\n")
-	outfile.write("".join(successor[::-1])   + "\n")
+	outfile.write("".join(predecessor) + "\n")
+	outfile.write("".join(successor)   + "\n")
