@@ -1,44 +1,57 @@
 #!/usr/bin/python
 from __future__ import division
+from math import factorial, floor
+from itertools import count
 
-def descending(vector):
-	return (sorted(vector)[::-1] == vector)
+def factoradic(decimal, positions):
+	if decimal < 0 or decimal != int(decimal):
+		raise ValueError("Factoradic implemented only for positive integers.")
+	digits = []
+	for radix in count(start = 1):
+		if decimal:
+			digits.append(int(decimal % radix))
+			decimal = floor(decimal / radix)
+		else:
+			break
+	if len(digits) < positions:
+		digits += [0] * (positions - len(digits))
+	return digits[::-1]
 
-def ascending(vector):
-	return (sorted(vector) == vector)
+def decimal(factoradic):
+	return sum(
+		digit * factorial(position)
+		for position, digit
+		in enumerate(reversed(factoradic))
+	)
 
-def successor(vector):
-	if descending(vector):
-		return [0] * len(vector)
-	if len(vector) == 2:
-		return vector[::-1]
-	head = vector[0]
-	tail = vector[1:]
-	if descending(tail):
-		tail = sorted(vector)
-		head = tail.pop(tail.index(head) + 1)
-		return [head] + tail
-	return [head] + successor(tail)
+def encodeLehmer(permutation):
+	lehmer = [0] * len(permutation)
+	for i, _ in enumerate(permutation):
+		for j, _ in list(enumerate(permutation))[i+1:]:
+			if permutation[j] < permutation[i]:
+				lehmer[i] += 1
+	symbols = sorted(permutation)
+	number  = decimal(lehmer)
+	return symbols, number
 
-def predecessor(vector):
-	if ascending(vector):
-		return [0] * len(vector)
-	if len(vector) == 2:
-		return vector[::-1]
-	head = vector[0]
-	tail = vector[1:]
-	if ascending(tail):
-		tail = sorted(vector)[::-1]
-		head = tail.pop(tail.index(head) + 1)
-		return [head] + tail
-	return [head] + predecessor(tail)
+def decodeLehmer(symbols, number):
+	permutation = []
+	symbolsSHC = symbols[:]
+	try:
+		code = factoradic(number, len(symbols))
+		for digit in code:
+			permutation.append(symbolsSHC.pop(digit))
+	except:
+		return ["0"] * len(symbols)
+	return permutation
 
 with open("nextperm.in", "r") as infile:
-	vector = [int(x) for x in infile.readlines()[1].split()]
+	permutation = infile.readlines()[1].split()
 
-P = predecessor(vector)
-S = successor(vector)
+symbols, number = encodeLehmer(permutation)
+predecessor     = decodeLehmer(symbols, number - 1)
+successor       = decodeLehmer(symbols, number + 1)
 
 with open("nextperm.out", "w") as outfile:
-	outfile.write(" ".join([str(x) for x in P]) + "\n")
-	outfile.write(" ".join([str(x) for x in S]) + "\n")
+	outfile.write(" ".join(predecessor) + "\n")
+	outfile.write(" ".join(successor))
