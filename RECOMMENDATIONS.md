@@ -4,6 +4,9 @@ PEP 8
 Соблюдайте [PEP8](http://legacy.python.org/dev/peps/pep-0008/).
 Обратите внимание на то, где надо ставить пробелы, а где они не нужны.
 
+Spaces are the preferred indentation method.
+
+Tabs should be used solely to remain consistent with code that is already indented with tabs.
 
 Работа с файлами
 ================
