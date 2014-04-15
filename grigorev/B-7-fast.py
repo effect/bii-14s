@@ -1,8 +1,5 @@
 #!/usr/bin/python
 from __future__ import division
-from math import factorial, floor
-from itertools import count
-
 
 def neighbor(permutation, backwards = False):
 	# find boundary of longest descending/ascending suffix
