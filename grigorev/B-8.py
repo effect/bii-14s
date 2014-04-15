@@ -18,7 +18,7 @@ def neighbor(combination, n):
 	return recombination
 
 with open("nextchoose.in", "r") as infile:
-	[n, _]      = [int(x) for x in infile.readline().split()]
+	n = int(infile.readline().split()[0])
 	combination = [int(x) for x in infile.readline().split()]
 
 try:
