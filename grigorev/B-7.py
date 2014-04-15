@@ -46,12 +46,12 @@ def decodeLehmer(symbols, number):
 	return permutation
 
 with open("nextperm.in", "r") as infile:
-	permutation = infile.readlines()[1].split()
+	permutation = [int(x) for x in infile.readlines()[1].split()]
 
 symbols, number = encodeLehmer(permutation)
 predecessor     = decodeLehmer(symbols, number - 1)
 successor       = decodeLehmer(symbols, number + 1)
 
 with open("nextperm.out", "w") as outfile:
-	outfile.write(" ".join(predecessor) + "\n")
-	outfile.write(" ".join(successor))
+	outfile.write(" ".join(str(x) for x in predecessor) + "\n")
+	outfile.write(" ".join(str(x) for x in successor))
