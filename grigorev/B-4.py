@@ -15,7 +15,7 @@ with open("choose.in", "r") as infile:
 
 choices = generator(
 	subsequence = [],
-	numbers = list(xrange(1, n+1)),
+	numbers = list(range(1, n+1)),
 	length = k
 )
 

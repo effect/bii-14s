@@ -13,7 +13,7 @@ with open("subsets.in", "r") as infile:
 
 subsets = generator(
 	subsequence = [],
-	numbers = list(xrange(1, n+1))
+	numbers = list(range(1, n+1))
 )
 
 with open("subsets.out", "w") as outfile:
