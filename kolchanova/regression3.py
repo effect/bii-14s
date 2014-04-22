@@ -11,7 +11,8 @@ from sklearn.neighbors import KNeighborsClassifier
 blue = np.loadtxt("./blue.txt")
 red = np.loadtxt("./red.txt")
 
-#Visualize data (this doesn't work outside ipython)
+#Visualize data (this doesn't work outside ipython), but we get something
+#like an ellipse.... (pic attached) 
 
 #_ = plot.plot(blue[:, 0], blue[:, 1], "b.")
 #_ = plot.plot(red[:, 0],  red[:, 1],  "r.")
