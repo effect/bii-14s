@@ -11,10 +11,10 @@ from sklearn.neighbors import KNeighborsClassifier
 blue = np.loadtxt("./blue.txt")
 red = np.loadtxt("./red.txt")
 
-#Visualize data
+#Visualize data (this doesn't work outside ipython)
 
-_ = plot.plot(blue[:, 0], blue[:, 1], "b.")
-_ = plot.plot(red[:, 0],  red[:, 1],  "r.")
+#_ = plot.plot(blue[:, 0], blue[:, 1], "b.")
+#_ = plot.plot(red[:, 0],  red[:, 1],  "r.")
 
 
 #Create the classifying function
