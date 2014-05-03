@@ -4,27 +4,33 @@ from io import BytesIO
 
 vowels = list("aeiouy")
 
-def anagram_generator(head, letters, letterset, lettercount):
-	if len(head) < len(letters):
-		for letter in letterset: # consider unique letters only
-			if head.count(letter) < lettercount[letter]: # not all instances in head
+def anagram_generator(head, target_length, unique_letters, letter_count):
+	if len(head) < target_length:
+		for letter in unique_letters:
+			if head.count(letter) < letter_count[letter]: # not all instances in head
 				if len(head) > 0 and head[-1] in vowels and letter in vowels: # consecutive vowels
 					continue
-				for anagram in anagram_generator(head + [letter], letters, letterset, lettercount):
+				for anagram in anagram_generator(head + [letter], target_length, unique_letters, letter_count):
 					yield anagram
 	else:
 		yield head
 
 with open("anagrams.in") as infile:
-#   with BytesIO("catt") as infile:
 	word = infile.readline().strip().lower()
 	letters = sorted(list(word))
 
-lettercount = {
+# calculate frequencies of letters only once (for speed gain)
+letter_count = {
 	letter: letters.count(letter)
 	for letter in set(letters)
 }
 
 with open("anagrams.out", "w") as outfile:
-	for anagram in anagram_generator([], letters, sorted(set(letters)), lettercount):
+	anagrams = anagram_generator(
+		head = [],
+		target_length = len(letters),
+		unique_letters = sorted(set(letters)),
+		letter_count = letter_count
+	)
+	for anagram in anagrams:
 		outfile.write("".join(anagram) + "\n")
