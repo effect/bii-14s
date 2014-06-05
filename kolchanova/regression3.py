@@ -37,21 +37,21 @@ Ytestset = y[train_set:]
 
 knearest = KNeighborsClassifier(n_neighbors=5)
 knearest.fit(Xtrainset, Ytrainset)
-print 'Training set score:', knearest.score(Xtrainset, Ytrainset)
-print 'Test set score:', knearest.score(Xtestset, Ytestset)
+print('Training set score:', knearest.score(Xtrainset, Ytrainset))
+print('Test set score:', knearest.score(Xtestset, Ytestset))
 
 #Prediction function
 
 def classify (x,y):
 	if knearest.predict([x,y]) == 0:
-		print "must be blue..."
+		print("must be blue...")
 	else:
-		print "must be red..."
+		print("must be red...")
 
 #propose some coordinates :)
-print 'what will be your x?'
+print('what will be your x?')
 x = raw_input()
-print 'and y?'
+print('and y?')
 y = raw_input()
 
 classify (x,y) 
