@@ -1,12 +1,5 @@
 #!/usr/bin/python
 
-def piece_sizes(cuts):
-        sorted_cuts = sorted(cuts)
-        return [
-                sorted_cuts[i] - sorted_cuts[i-1]
-                for i in range(1, len(sorted_cuts))
-        ]
-
 with open("maxpiece.in") as infile:
         n, m, k = [int(x) for x in infile.readline().split()]
         xcuts = [0, n]
