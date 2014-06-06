@@ -1,5 +1,5 @@
 
-#!/usr/bin/env python
+#!/usr/bin/python
 
 infile = open("olympic.in", "r") 
 
